@@ -1,0 +1,26 @@
+sudo: false
+
+language: "java"
+
+jdk: "oraclejdk8"
+
+script: "./gradlew build"
+
+before_deploy:
+  - ./gradlew clean
+  - ./gradlew jar
+  - git config --local user.name "Sam Gauck"
+  - git config --local user.email "30577766+Samasaur1@users.noreply.github.com"
+  - export NAME="v$(./gradlew version -q)"
+  - git tag $NAME
+
+deploy:
+  provider: releases
+  api_key: "$GH_TOKEN"
+  file_glob: true
+  file: "build/libs/*"
+  skip_cleanup: true
+  name: $NAME
+  prerelease: true
+  on:
+      branch: master

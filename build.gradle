@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'com.gauck.sam'
-version '0.0.0'
+version '0.1.0'
 
 sourceCompatibility = 1.8
 
@@ -19,20 +19,17 @@ dependencies {
 
 def incrementPatchVersion() {
     println(":incrementVersion - Incrementing Patch Version...")
-    incrementVersion(true, false, false, true)
-    incrementVersion(false, false, false, true)
+    incrementVersion(false, false, true)
 }
 
 def incrementMinorVersion() {
     println(":incrementVersion - Incrementing Minor Version...")
-    incrementVersion(true, false, true, false)
-    incrementVersion(false, false, true, false)
+    incrementVersion(false, true, false)
 }
 
 def incrementMajorVersion() {
     println(":incrementVersion - Incrementing Major Version...")
-    incrementVersion(true, true, false, false)
-    incrementVersion(false, true, false, false)
+    incrementVersion(true, false, false)
 }
 
 def incrementVersion(boolean major, boolean minor, boolean patch) {
