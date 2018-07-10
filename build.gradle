@@ -1,0 +1,184 @@
+import java.util.regex.Pattern
+
+plugins {
+    id 'java'
+}
+
+group 'com.gauck.sam'
+version '0.0.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+def incrementPatchVersion() {
+    println(":incrementVersion - Incrementing Patch Version...")
+    incrementVersion(true, false, false, true)
+    incrementVersion(false, false, false, true)
+}
+
+def incrementMinorVersion() {
+    println(":incrementVersion - Incrementing Minor Version...")
+    incrementVersion(true, false, true, false)
+    incrementVersion(false, false, true, false)
+}
+
+def incrementMajorVersion() {
+    println(":incrementVersion - Incrementing Major Version...")
+    incrementVersion(true, true, false, false)
+    incrementVersion(false, true, false, false)
+}
+
+def incrementVersion(boolean major, boolean minor, boolean patch) {
+    println()
+    if (major) {
+        println(":incrementVersion - Incrementing Major Version...")
+    } else if (minor) {
+        println(":incrementVersion - Incrementing Minor Version...")
+    } else if (patch) {
+        println(":incrementVersion - Incrementing Patch Version...")
+    }
+    println()
+
+    def file = file("build.gradle")
+    def patternVersionNumber = Pattern.compile("version '(\\d+)\\.(\\d+)\\.(\\d+)'")
+    def text = file.getText()
+    def matcherVersionNumber = patternVersionNumber.matcher(text)
+    matcherVersionNumber.find()
+    def majorVersion = Integer.parseInt(matcherVersionNumber.group(1))
+    def minorVersion = Integer.parseInt(matcherVersionNumber.group(2))
+    def patchVersion = Integer.parseInt(matcherVersionNumber.group(3))
+    def newMajor = majorVersion + (major ? 1 : 0)
+    def newMinor = newMajor == majorVersion ? minorVersion + (minor ? 1 : 0) : 0
+    def newPatch = (newMajor == majorVersion && newMinor == minorVersion) ? patchVersion + (patch ? 1 : 0) : 0
+    def newVersion = newMajor + "." + newMinor + "." + newPatch
+    println(":incrementVersion - Old version: " + majorVersion + "." + minorVersion + "." + patchVersion)
+    println(":incrementVersion - New version: " + newVersion)
+    println()
+    def content = matcherVersionNumber.replaceAll("version '" + newVersion + "'")
+    file.write(content)
+}
+
+def setVersion(int major, int minor, int patch) {
+    println()
+    print(":setVersion - Setting version to ")
+
+    def file = file("build.gradle")
+    def patternVersionNumber = Pattern.compile("version '(\\d+)\\.(\\d+)\\.(\\d+)'")
+    def text = file.getText()
+    def matcherVersionNumber = patternVersionNumber.matcher(text)
+    matcherVersionNumber.find()
+    def majorVersion = Integer.parseInt(matcherVersionNumber.group(1))
+    def minorVersion = Integer.parseInt(matcherVersionNumber.group(2))
+    def patchVersion = Integer.parseInt(matcherVersionNumber.group(3))
+    def newVersion = major + "." + minor + "." + patch
+    println(newVersion)//see line 2 of this method
+    println()
+
+    println(":setVersion - Old version: " + majorVersion + "." + minorVersion + "." + patchVersion)
+    println(":setVersion - New version: " + newVersion)
+    println()
+    def content = matcherVersionNumber.replaceAll("version '" + newVersion + "'")
+    file.write(content)
+}
+
+def setVersion(String version, boolean dummy) {
+    println()
+    println(":setVersion - Setting version to " + version)
+    println()
+
+    def file1 = file("build.gradle")
+    def patternVersionNumber1 = Pattern.compile("version '(\\d+)\\.(\\d+)\\.(\\d+)'")
+    def text1 = file1.getText()
+    def matcherVersionNumber1 = patternVersionNumber1.matcher(text1)
+    matcherVersionNumber1.find()
+    def majorVersion = Integer.parseInt(matcherVersionNumber1.group(1))
+    def minorVersion = Integer.parseInt(matcherVersionNumber1.group(2))
+    def patchVersion = Integer.parseInt(matcherVersionNumber1.group(3))
+
+    def content1 = matcherVersionNumber1.replaceAll("version '" + version + "'")
+    file1.write(content1)
+
+    def file2 = file("src/main/java/com/samgauck/CityManagement/Main.java")
+    def patternVersionNumber2 = Pattern.compile("\"(\\d+)\\.(\\d+)\\.(\\d+)\"")
+    def text2 = file2.getText()
+    def matcherVersionNumber2 = patternVersionNumber2.matcher(text2)
+    matcherVersionNumber2.find()
+
+    println(":setVersion - Old version: " + majorVersion + "." + minorVersion + "." + patchVersion)
+    println(":setVersion - New version: " + version)
+    println()
+    def content2 = matcherVersionNumber2.replaceAll("\"" + version + "\"")
+    file2.write(content2)
+}
+
+//noinspection GroovyAssignabilityCheck
+task updateMajor() {
+    doFirst {
+        incrementMajorVersion()
+    }
+}
+//noinspection GroovyAssignabilityCheck
+task updateMinor() {
+    doFirst {
+        incrementMinorVersion()
+    }
+}
+//noinspection GroovyAssignabilityCheck
+task updatePatch() {
+    doFirst {
+        incrementPatchVersion()
+    }
+}
+//noinspection GroovyAssignabilityCheck
+task update(dependsOn: ':version') {
+    doFirst {
+        println(":update - What type of update would you like? (major, minor, patch)")
+        println(":update - Enter a number 1-3 that corresponds to the above")
+        println(":update - Anything that is not 1-3  will not update anything")
+        def type = System.in.newReader().readLine()
+        switch (type) {
+            case "1":
+                incrementMajorVersion()
+                break
+            case "2":
+                incrementMinorVersion()
+                break
+            case "3":
+                incrementPatchVersion()
+                break
+            default:
+                println("Not doing anything")
+        }
+    }
+}
+
+//noinspection GroovyAssignabilityCheck
+task version {
+    doFirst {
+        println(version)
+    }
+}
+
+//noinspection GroovyAssignabilityCheck
+task testing {
+    doFirst {
+        //Whatever
+    }
+}
+
+//noinspection GroovyAssignabilityCheck
+task resetVersion(dependsOn: ':version') {
+    doFirst {
+        println("What version would you like to reset to?")
+        println("Please be very careful that this is the correct format.")
+        println("It should be: \${MAJOR}.\${MINOR}.\${PATCH}-\${BRANCHNAME}-b\${BUILDNUMBER}")
+        setVersion(System.in.newReader().readLine(), true)
+    }
+}
