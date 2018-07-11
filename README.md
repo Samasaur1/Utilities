@@ -1,5 +1,6 @@
 # Utilities
 A collection of Java utilities
+[![](https://jitpack.io/v/Samasaur1/Utilities.svg)](https://jitpack.io/#Samasaur1/Utilities)
 
 ## Installation
 If you use Gradle, Maven, SBT, or Leiningen, follow [this](https://jitpack.io/#Samasaur1/Utilities) guide.
