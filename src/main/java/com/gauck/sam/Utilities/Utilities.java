@@ -1,4 +1,4 @@
-package Utilities;
+package com.gauck.sam.Utilities;
 
 import java.util.*;
 
