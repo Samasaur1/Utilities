@@ -1,3 +1,5 @@
+package Utilities;
+
 import java.util.*;
 
 /**
@@ -16,7 +18,7 @@ public class Utilities {
      * @param original The string to be capitalized.
      * @return A capitalized version of the parameter.
      */
-    public static String capitailze(String original) {
+    public static String capitalize(String original) {
         return original.substring(0, 1).toUpperCase() + original.substring(1).toLowerCase();
     }
 
