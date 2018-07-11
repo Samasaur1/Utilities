@@ -9,7 +9,8 @@ public final class Utilities {
     /**
      * A private constructor so that this class cannot be instantiated.
      */
-    private Utilities() {
+    private Utilities() throws Exception {
+        throw new Exception("Don't instantiate this class!");
     }
 
     /**
