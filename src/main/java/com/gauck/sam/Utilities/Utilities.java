@@ -86,7 +86,9 @@ public final class Utilities {
      * @return The cleaned ArrayList.
      */
     public static ArrayList<String> removeProfanity(ArrayList<String> original) {
-        original.forEach(Utilities::removeProfanity);
+        for (int i = 0; i < original.size(); i++) {
+            original.set(i, removeProfanity(original.get(i)));
+        }
         return original;
     }
 
