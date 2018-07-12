@@ -21,6 +21,5 @@ deploy:
   file: "build/libs/*"
   skip_cleanup: true
   name: $NAME
-  prerelease: true
   on:
       branch: master
