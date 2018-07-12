@@ -1,8 +1,10 @@
 package com.gauck.sam.Utilities;
 
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Unit tests for the {@link Utilities} capitalize() function.

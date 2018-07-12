@@ -11,7 +11,7 @@ import org.junit.Test;
 public class AverageTest {
     @Test
     public void averageEmptyArrayTest() {
-        Assert.assertEquals(0, Utilities.average(new int[] {}), 0);
+        Assert.assertEquals(0, Utilities.average(new int[]{}), 0);
     }
 
     @Test
@@ -22,7 +22,7 @@ public class AverageTest {
     @Test
     public void averageOneNumberArrayTest() {
         for (int i = 0; i <= 10; i++) {
-            Assert.assertEquals("Failed on: " + i, i, Utilities.average(new int[] {i}), 0);
+            Assert.assertEquals("Failed on: " + i, i, Utilities.average(new int[]{i}), 0);
         }
     }
 
@@ -34,7 +34,7 @@ public class AverageTest {
             values[i] = (int) Math.round(Math.random() * 100);
             total += values[i];
         }
-        Assert.assertEquals(total/5, Utilities.average(values), 0);
+        Assert.assertEquals(total / 5, Utilities.average(values), 0);
     }
 
     @Test
@@ -45,6 +45,6 @@ public class AverageTest {
             values[i] = (int) Math.round(Math.random() * 100);
             total += values[i];
         }
-        Assert.assertEquals(total/100, Utilities.average(values), 0);
+        Assert.assertEquals(total / 100, Utilities.average(values), 0);
     }
 }
