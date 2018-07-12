@@ -38,6 +38,8 @@ public final class Utilities {
      * @return The average of the parameters.
      */
     public static double average(int[] values) {
+        if (values == null) return 0;
+        if (values.length == 0) return 0;
         int total = 0;
         for (int i : values) {
             total += i;
