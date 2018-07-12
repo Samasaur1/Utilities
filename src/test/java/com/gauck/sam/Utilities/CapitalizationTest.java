@@ -87,7 +87,7 @@ public class CapitalizationTest {
 
     @Test
     public void capitalizeSpaceAndLowercaseLetterAndSpaceTest() {
-//        letters.forEach(letter -> Assert.assertEquals(" " + letter.toUpperCase() + " ", Utilities.capitalize(" " + letter + " ")));
+        letters.forEach(letter -> Assert.assertEquals(" " + letter.toUpperCase() + " ", Utilities.capitalize(" " + letter + " ")));
         Assert.assertEquals(" A ", Utilities.capitalize(" a ")); //Encompassed, but we'll leave it in in case my forEach is wrong.
     }
 
