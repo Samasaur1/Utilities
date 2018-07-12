@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * A Javadoc template. You're welcome. TODO: Update me.
+ * Unit tests for the {@link Utilities} average() function.
  *
  * @author Samasaur
  */

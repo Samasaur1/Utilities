@@ -1,19 +1,17 @@
 package com.gauck.sam.Utilities;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 /**
- * A Javadoc template. You're welcome. TODO: Update me.
+ * Unit tests for the {@link Utilities} capitalize() function.
  *
  * @author Samasaur
  */
 public class CapitalizationTest {
 
-    public static ArrayList<String> letters = new ArrayList<>(Arrays.asList("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"));
+    private final static ArrayList<String> letters = new ArrayList<>(Arrays.asList("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"));
 
     @Test
     public void capitalizeEmptyStringTest() {
