@@ -1,4 +1,4 @@
-# Utilities [![Build Status](https://travis-ci.com/Samasaur1/Utilities.svg?branch=development)](https://travis-ci.com/Samasaur1/Utilities) [![](https://jitpack.io/v/Samasaur1/Utilities.svg)](https://jitpack.io/#Samasaur1/Utilities)
+# Utilities [![Build Status](https://travis-ci.com/Samasaur1/Utilities.svg?branch=master)](https://travis-ci.com/Samasaur1/Utilities) [![](https://jitpack.io/v/Samasaur1/Utilities.svg)](https://jitpack.io/#Samasaur1/Utilities)
 A collection of Java utilities
 
 ## Installation
