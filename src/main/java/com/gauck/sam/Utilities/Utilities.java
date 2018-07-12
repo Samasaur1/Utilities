@@ -20,8 +20,15 @@ public final class Utilities {
      * @return A capitalized version of the parameter.
      */
     public static String capitalize(String original) {
-        if (original.isEmpty()) return "";
-        return original.substring(0, 1).toUpperCase() + original.substring(1).toLowerCase();
+        if (original == null) return null; //Make sure we weren't passed null.
+        if (original.trim().isEmpty()) return original; //If all it has is whitespace, return it.
+        int index = 0;
+        String firstChar = original.substring(index, index + 1);
+        while (firstChar.trim().isEmpty()) {
+            index += 1;
+            firstChar = original.substring(index, index + 1);
+        }
+        return original.substring(0, index) + original.substring(index, index + 1).toUpperCase() + original.substring(index + 1).toLowerCase();
     }
 
     /**
