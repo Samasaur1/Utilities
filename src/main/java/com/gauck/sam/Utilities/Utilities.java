@@ -74,7 +74,7 @@ public final class Utilities {
      */
     public static String removeProfanity(String original) {
         for (String bad : profaneWords) {
-            original = original.replaceAll(bad, clean(bad));
+            original = original.replaceAll("(?i)" + bad, clean(bad));
         }
         return original;
     }
