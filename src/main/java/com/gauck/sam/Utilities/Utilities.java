@@ -20,6 +20,7 @@ public final class Utilities {
      * @return A capitalized version of the parameter.
      */
     public static String capitalize(String original) {
+        if (original.isEmpty()) return "";
         return original.substring(0, 1).toUpperCase() + original.substring(1).toLowerCase();
     }
 
