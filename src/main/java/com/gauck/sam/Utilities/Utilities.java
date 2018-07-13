@@ -73,6 +73,7 @@ public final class Utilities {
      * @return The cleaned string.
      */
     public static String removeProfanity(String original) {
+        if (original == null) return null;
         for (String bad : profaneWords) {
             original = original.replaceAll("(?i)" + bad, clean(bad));
         }
@@ -86,6 +87,7 @@ public final class Utilities {
      * @return The cleaned ArrayList.
      */
     public static ArrayList<String> removeProfanity(ArrayList<String> original) {
+        if (original == null) return null;
         for (int i = 0; i < original.size(); i++) {
             original.set(i, removeProfanity(original.get(i)));
         }
