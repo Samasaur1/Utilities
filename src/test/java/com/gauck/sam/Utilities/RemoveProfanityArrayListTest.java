@@ -23,7 +23,7 @@ public class RemoveProfanityArrayListTest {
 
     @Test
     public void removeProfanityFromCleanStringTest() {
-        ArrayList<String> list = new ArrayList<>(Collections.singleton("Sorry, Stringy"));
+        ArrayList<String> list = new ArrayList<>(Collections.singleton("Clean"));
         Assert.assertEquals(list, Utilities.removeProfanity(list));
     }
 
@@ -34,21 +34,21 @@ public class RemoveProfanityArrayListTest {
 
     @Test
     public void removeProfanityFromCleanStringAndCleanStringTest() {
-        ArrayList<String> list = new ArrayList<>(Arrays.asList("I didn't", "want to"));
+        ArrayList<String> list = new ArrayList<>(Arrays.asList("clean", "CLEAN"));
         Assert.assertEquals(list, Utilities.removeProfanity(list));
     }
 
     @Test
     public void removeProfanityFromCleanStringAndDirtyStringTest() {
-        ArrayList<String> list1 = new ArrayList<>(Arrays.asList("Do this", "Crap nuggets"));
-        ArrayList<String> list2 = new ArrayList<>(Arrays.asList("Do this", "**** nuggets"));
+        ArrayList<String> list1 = new ArrayList<>(Arrays.asList("clean", "Crap"));
+        ArrayList<String> list2 = new ArrayList<>(Arrays.asList("clean", "****"));
         Assert.assertEquals(list2, Utilities.removeProfanity(list1));
     }
 
     @Test
     public void removeProfanityFromDirtyStringAndDirtyStringTest() {
-        ArrayList<String> list1 = new ArrayList<>(Arrays.asList("Now I'm pissed off", "Shit, I'm sorry"));
-        ArrayList<String> list2 = new ArrayList<>(Arrays.asList("Now I'm ****ed off", "****, I'm sorry"));
+        ArrayList<String> list1 = new ArrayList<>(Arrays.asList("crap", "cRAp"));
+        ArrayList<String> list2 = new ArrayList<>(Arrays.asList("****", "****"));
         Assert.assertEquals(list2, Utilities.removeProfanity(list1));
     }
 }
