@@ -113,5 +113,6 @@ public final class Utilities {
      */
     private static Set<String> profaneWords = new HashSet<>(Arrays.asList(
             "fuck", "shit", "bitch", "ass", "crap", "piss", "dick", "cock", "pussy",
-            "asshole", "fag", "bastard", "slut", "douche", "cunt", "damn", "pissed"));
+            "asshole", "fag", "bastard", "slut", "douche", "cunt", "damn", "pissed",
+            "fucker", "motherfucker", "dammit"));
 }
