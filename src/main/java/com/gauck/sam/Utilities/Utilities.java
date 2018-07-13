@@ -75,7 +75,7 @@ public final class Utilities {
     public static String removeProfanity(String original) {
         if (original == null) return null;
         for (String bad : profaneWords) {
-            original = original.replaceAll("(?i)" + bad, clean(bad));
+            original = original.replaceAll("(?i)(?<![a-zA-Z])" + bad + "(?![a-zA-Z])", clean(bad));
         }
         return original;
     }
@@ -113,5 +113,6 @@ public final class Utilities {
      */
     private static Set<String> profaneWords = new HashSet<>(Arrays.asList(
             "fuck", "shit", "bitch", "ass", "crap", "piss", "dick", "cock", "pussy",
-            "asshole", "fag", "bastard", "slut", "douche", "cunt", "damn"));
+            "asshole", "fag", "bastard", "slut", "douche", "cunt", "damn", "pissed",
+            "fucker", "motherfucker", "dammit"));
 }
