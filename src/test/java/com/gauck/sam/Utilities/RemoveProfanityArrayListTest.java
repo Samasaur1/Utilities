@@ -10,7 +10,7 @@ import java.util.*;
  *
  * @author Samasaur
  */
-public class RemoveProfanityArrayList {
+public class RemoveProfanityArrayListTest {
     @Test
     public void removeProfanityFromEmptyArrayListTest() {
         Assert.assertEquals(new ArrayList<String>(), Utilities.removeProfanity(new ArrayList<>()));
