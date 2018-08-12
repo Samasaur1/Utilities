@@ -2,6 +2,7 @@ import java.util.regex.Pattern
 
 plugins {
     id 'java'
+    id 'com.gradle.build-scan' version '1.15.2'
 }
 
 group 'com.gauck.sam'
@@ -15,6 +16,13 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+buildScan {
+    termsOfServiceUrl = 'https://gradle.com/terms-of-service'     
+    termsOfServiceAgree = 'yes'                                   
+
+    publishAlways()                                               
 }
 
 def incrementPatchVersion() {
