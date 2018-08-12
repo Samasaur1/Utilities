@@ -179,3 +179,9 @@ task resetVersion(dependsOn: ':version') {
         setVersion(System.in.newReader().readLine(), true)
     }
 }
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
