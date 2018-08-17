@@ -2,10 +2,11 @@ import java.util.regex.Pattern
 
 plugins {
     id 'java'
+    id 'com.gradle.build-scan' version '1.15.2'
 }
 
 group 'com.gauck.sam'
-version '1.2.0'
+version '1.3.0'
 
 sourceCompatibility = 1.8
 
@@ -15,6 +16,11 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+buildScan {
+    termsOfServiceUrl = 'https://gradle.com/terms-of-service'     
+    termsOfServiceAgree = 'yes'
 }
 
 def incrementPatchVersion() {
@@ -44,7 +50,7 @@ def incrementVersion(boolean major, boolean minor, boolean patch) {
     println()
 
     def file = file("build.gradle")
-    def patternVersionNumber = Pattern.compile("version '(\\d+)\\.(\\d+)\\.(\\d+)'")
+    def patternVersionNumber = Pattern.compile("(?<=\\n)version '(\\d+)\\.(\\d+)\\.(\\d+)'")
     def text = file.getText()
     def matcherVersionNumber = patternVersionNumber.matcher(text)
     matcherVersionNumber.find()
@@ -67,7 +73,7 @@ def setVersion(int major, int minor, int patch) {
     print(":setVersion - Setting version to ")
 
     def file = file("build.gradle")
-    def patternVersionNumber = Pattern.compile("version '(\\d+)\\.(\\d+)\\.(\\d+)'")
+    def patternVersionNumber = Pattern.compile("(?<=\\n)version '(\\d+)\\.(\\d+)\\.(\\d+)'")
     def text = file.getText()
     def matcherVersionNumber = patternVersionNumber.matcher(text)
     matcherVersionNumber.find()
@@ -91,7 +97,7 @@ def setVersion(String version, boolean dummy) {
     println()
 
     def file1 = file("build.gradle")
-    def patternVersionNumber1 = Pattern.compile("version '(\\d+)\\.(\\d+)\\.(\\d+)'")
+    def patternVersionNumber1 = Pattern.compile("(?<=\\n)version '(\\d+)\\.(\\d+)\\.(\\d+)'")
     def text1 = file1.getText()
     def matcherVersionNumber1 = patternVersionNumber1.matcher(text1)
     matcherVersionNumber1.find()
@@ -177,5 +183,11 @@ task resetVersion(dependsOn: ':version') {
         println("Please be very careful that this is the correct format.")
         println("It should be: \${MAJOR}.\${MINOR}.\${PATCH}-\${BRANCHNAME}-b\${BUILDNUMBER}")
         setVersion(System.in.newReader().readLine(), true)
+    }
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
     }
 }
