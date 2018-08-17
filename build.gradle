@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'com.gauck.sam'
-version '1.3.1'
+version '1.3.2'
 
 sourceCompatibility = 1.8
 
@@ -107,18 +107,6 @@ def setVersion(String version, boolean dummy) {
 
     def content1 = matcherVersionNumber1.replaceAll("version '" + version + "'")
     file1.write(content1)
-
-    def file2 = file("src/main/java/com/samgauck/CityManagement/Main.java")
-    def patternVersionNumber2 = Pattern.compile("\"(\\d+)\\.(\\d+)\\.(\\d+)\"")
-    def text2 = file2.getText()
-    def matcherVersionNumber2 = patternVersionNumber2.matcher(text2)
-    matcherVersionNumber2.find()
-
-    println(":setVersion - Old version: " + majorVersion + "." + minorVersion + "." + patchVersion)
-    println(":setVersion - New version: " + version)
-    println()
-    def content2 = matcherVersionNumber2.replaceAll("\"" + version + "\"")
-    file2.write(content2)
 }
 
 //noinspection GroovyAssignabilityCheck

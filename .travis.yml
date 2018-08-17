@@ -18,22 +18,9 @@ before_deploy:
   - git config --local user.name "Sam Gauck"
   - git config --local user.email "30577766+Samasaur1@users.noreply.github.com"
   - export NAME="v$(./gradlew version -q)"
-  - if $TRAVIS_TAG; then echo "Tag existed"; else git tag $NAME; fi
+  - git tag $NAME
 
 deploy:
-  - provider: script
-    script:
-      - git clone git://github.com/Samasaur1/Maven-Central.git
-      - cd Maven-Central
-      - git config user.name "Sam Gauck"
-      - git config user.email "30577766+Samasaur1@users.noreply.github.com"
-      - mvn install:install-file -Dcom.gauck.sam -DartifactId=Utilities -Dversion=$(./gradlew version -q) -Dfile=../build/libs/Utilities-$(./gradlew version -q).jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=. -DcreateChecksum=true
-      - git add com/gauck/sam/Utilities/*
-      - git commit -m "Add Utilities version $(./gradlew version -q)"
-      - git push "https://$GH_TOKEN@github.com/Samasaur1/Maven-Central.git master > /dev/null 2>&1
-    on:
-        tags: true
-        jdk: oraclejdk8
   - provider: releases
     api_key: "$GH_TOKEN"
     file_glob: true
