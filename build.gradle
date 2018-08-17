@@ -2,11 +2,11 @@ import java.util.regex.Pattern
 
 plugins {
     id 'java'
-    id 'com.gradle.build-scan' version '1.15.2'
+    id 'com.gradle.build-scan' version '1.16.0'
 }
 
 group 'com.gauck.sam'
-version '1.2.0'
+version '1.16.0'
 
 sourceCompatibility = 1.8
 
