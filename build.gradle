@@ -2,11 +2,11 @@ import java.util.regex.Pattern
 
 plugins {
     id 'java'
-    id 'com.gradle.build-scan' version '1.16.0'
+    id 'com.gradle.build-scan' version '1.15.2'
 }
 
 group 'com.gauck.sam'
-version '1.16.0'
+version '1.2.0'
 
 sourceCompatibility = 1.8
 
@@ -50,7 +50,7 @@ def incrementVersion(boolean major, boolean minor, boolean patch) {
     println()
 
     def file = file("build.gradle")
-    def patternVersionNumber = Pattern.compile("version '(\\d+)\\.(\\d+)\\.(\\d+)'")
+    def patternVersionNumber = Pattern.compile("(?<!id 'com.gradle.build-scan' )version '(\\d+)\\.(\\d+)\\.(\\d+)'")
     def text = file.getText()
     def matcherVersionNumber = patternVersionNumber.matcher(text)
     matcherVersionNumber.find()
@@ -73,7 +73,7 @@ def setVersion(int major, int minor, int patch) {
     print(":setVersion - Setting version to ")
 
     def file = file("build.gradle")
-    def patternVersionNumber = Pattern.compile("version '(\\d+)\\.(\\d+)\\.(\\d+)'")
+    def patternVersionNumber = Pattern.compile("(?<!id 'com.gradle.build-scan' )version '(\\d+)\\.(\\d+)\\.(\\d+)'")
     def text = file.getText()
     def matcherVersionNumber = patternVersionNumber.matcher(text)
     matcherVersionNumber.find()
@@ -97,7 +97,7 @@ def setVersion(String version, boolean dummy) {
     println()
 
     def file1 = file("build.gradle")
-    def patternVersionNumber1 = Pattern.compile("version '(\\d+)\\.(\\d+)\\.(\\d+)'")
+    def patternVersionNumber1 = Pattern.compile("(?<!id 'com.gradle.build-scan' )version '(\\d+)\\.(\\d+)\\.(\\d+)'")
     def text1 = file1.getText()
     def matcherVersionNumber1 = patternVersionNumber1.matcher(text1)
     matcherVersionNumber1.find()
