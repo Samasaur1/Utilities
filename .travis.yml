@@ -18,7 +18,7 @@ before_deploy:
   - git config --local user.name "Sam Gauck"
   - git config --local user.email "30577766+Samasaur1@users.noreply.github.com"
   - export NAME="v$(./gradlew version -q)"
-  - git tag $NAME
+  - if git tag $NAME 2>/dev/null; then echo "Tag created"; else echo "Tag existed"; fi
 
 deploy:
   - provider: script
