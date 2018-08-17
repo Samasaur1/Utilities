@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'com.gauck.sam'
-version '1.3.2'
+version '1.3.3'
 
 sourceCompatibility = 1.8
 
@@ -169,7 +169,7 @@ task resetVersion(dependsOn: ':version') {
     doFirst {
         println("What version would you like to reset to?")
         println("Please be very careful that this is the correct format.")
-        println("It should be: \${MAJOR}.\${MINOR}.\${PATCH}-\${BRANCHNAME}-b\${BUILDNUMBER}")
+        println("It should be: \${MAJOR}.\${MINOR}.\${PATCH}")
         setVersion(System.in.newReader().readLine(), true)
     }
 }
