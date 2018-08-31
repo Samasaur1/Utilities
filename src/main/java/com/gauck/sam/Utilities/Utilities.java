@@ -93,12 +93,11 @@ public final class Utilities {
      * @return The cleaned List. Each string in it has been cleansed.
      * @see #removeProfanity(String)
      */
-    public static <ListType extends Collection<String>> ListType removeProfanity(ListType original) {
-        original.forEach(string -> {
-            original.remove(string);
-            string = removeProfanity(string);
-            original.add(string);
-        });
+    public static <ListType extends List<String>> ListType removeProfanity(ListType original) {
+        if (original == null) return null;
+        for (int i = 0; i < original.size(); i++) {
+            original.set(i, removeProfanity(original.get(i)));
+        }
         return original;
     }
 
