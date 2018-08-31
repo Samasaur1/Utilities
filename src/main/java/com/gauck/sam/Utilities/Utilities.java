@@ -92,6 +92,7 @@ public final class Utilities {
      * @param original The List to 'clean'. If this is null, this method returns null. If it is empty, it is returned unchanged.
      * @return The cleaned List. Each string in it has been cleansed.
      * @see #removeProfanity(String)
+     * @since 1.4
      */
     public static List<String> removeProfanity(List<String> original) {
         if (original == null) return null;
