@@ -10,7 +10,7 @@ jdk:
 - openjdk9
 
 
-script: "./gradlew clean build --rerun-tasks --scan"
+script: "./gradlew clean build --rerun-tasks --scan" # gradle build runs test
 
 before_deploy:
   - ./gradlew clean
