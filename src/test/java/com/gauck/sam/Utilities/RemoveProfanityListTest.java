@@ -6,13 +6,13 @@ import org.junit.Test;
 import java.util.*;
 
 /**
- * Unit tests for the {@link Utilities} removeProfanity(ArrayList<String> original) function.
+ * Unit tests for the {@link Utilities} removeProfanity(List original) function.
  *
  * @author Samasaur
  */
-public class RemoveProfanityArrayListTest {
+public class RemoveProfanityListTest {
     @Test
-    public void removeProfanityFromEmptyArrayListTest() {
+    public void removeProfanityFromEmptyListTest() {
         Assert.assertEquals(new ArrayList<String>(), Utilities.removeProfanity(new ArrayList<>()));
     }
 
