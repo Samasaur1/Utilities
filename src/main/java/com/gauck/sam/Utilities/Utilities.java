@@ -84,16 +84,16 @@ public final class Utilities {
     }
 
     /**
-     * Removes profanity from every string in a given ArrayList.
-     * Strings that are either empty or null will be returned unchanged. If the ArrayList is empty or null, it will be returned unchanged.
+     * Removes profanity from every string in a given List.
+     * Strings that are either empty or null will be returned unchanged. If the List is empty or null, it will be returned unchanged.
      * <p>
-     * For every string in this ArrayList, the {@link #removeProfanity(String)} method is called on it.
+     * For every string in this List, the {@link #removeProfanity(String)} method is called on it.
      *
-     * @param original The ArrayList to 'clean'. If this is null, this method returns null. If it is empty, it is returned unchanged.
-     * @return The cleaned ArrayList. Each string in it has been cleansed.
+     * @param original The List to 'clean'. If this is null, this method returns null. If it is empty, it is returned unchanged.
+     * @return The cleaned List. Each string in it has been cleansed.
      * @see #removeProfanity(String)
      */
-    public static ArrayList<String> removeProfanity(ArrayList<String> original) {
+    public static List<String> removeProfanity(List<String> original) {
         if (original == null) return null;
         for (int i = 0; i < original.size(); i++) {
             original.set(i, removeProfanity(original.get(i)));
