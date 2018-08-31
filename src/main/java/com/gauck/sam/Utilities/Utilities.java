@@ -4,6 +4,8 @@ import java.util.*;
 
 /**
  * A utility class to help do things.
+ *
+ * @author Samasaur
  */
 public final class Utilities {
     /**
@@ -14,10 +16,11 @@ public final class Utilities {
     }
 
     /**
-     * A method that takes a string and capitalizes it correctly (e.g. eXamPLe → Example).
+     * Returns a correctly capitalized string.
+     * If it is empty or null, it is returned unchanged.
      *
      * @param original The string to be capitalized.
-     * @return A capitalized version of the parameter.
+     * @return A capitalized version of the passed string.
      */
     public static String capitalize(String original) {
         if (original == null) return null; //Make sure we weren't passed null.
@@ -32,7 +35,7 @@ public final class Utilities {
     }
 
     /**
-     * A method that takes some number of integers and returns the average of them
+     * Returns the average of an array of integers.
      *
      * @param values The ints to take the average of.
      * @return The average of the parameters.
@@ -67,10 +70,10 @@ public final class Utilities {
     }
 
     /**
-     * Removes profanity from a given string.
+     * Removes profanity from a given string. Strings that are either empty or null will be returned unchanged.
      *
-     * @param original The string to 'clean'.
-     * @return The cleaned string.
+     * @param original The string to 'clean'. If this is null, this method returns null. If it is empty, it is returned unchanged.
+     * @return The cleaned string. This is the original string, with any profane words (separated by nonalphabetic characters) replaced by * characters.
      */
     public static String removeProfanity(String original) {
         if (original == null) return null;
@@ -81,12 +84,17 @@ public final class Utilities {
     }
 
     /**
-     * Removes profanity from every string in a given ArrayList.
+     * Removes profanity from every string in a given List.
+     * Strings that are either empty or null will be returned unchanged. If the List is empty or null, it will be returned unchanged.
+     * <p>
+     * For every string in this List, the {@link #removeProfanity(String)} method is called on it.
      *
-     * @param original The ArrayList to 'clean'.
-     * @return The cleaned ArrayList.
+     * @param original The List to 'clean'. If this is null, this method returns null. If it is empty, it is returned unchanged.
+     * @return The cleaned List. Each string in it has been cleansed.
+     * @see #removeProfanity(String)
+     * @since 1.4
      */
-    public static ArrayList<String> removeProfanity(ArrayList<String> original) {
+    public static List<String> removeProfanity(List<String> original) {
         if (original == null) return null;
         for (int i = 0; i < original.size(); i++) {
             original.set(i, removeProfanity(original.get(i)));
