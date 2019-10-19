@@ -4,12 +4,10 @@ dist: bionic
 language: "java"
 
 jdk:
-- oraclejdk8
 - oraclejdk9
-- oraclejdk11
-- openjdk8
+- oraclejdk13
 - openjdk9
-- openjdk11
+- openjdk13
 
 
 script: "./gradlew clean build --rerun-tasks --scan" # gradle build runs test
