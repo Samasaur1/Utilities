@@ -3,6 +3,7 @@ import java.util.regex.Pattern
 plugins {
     id 'java'
     id 'com.gradle.build-scan' version '1.15.2'
+    id 'maven-publish'
 }
 
 group 'com.gauck.sam'
@@ -21,6 +22,27 @@ dependencies {
 buildScan {
     termsOfServiceUrl = 'https://gradle.com/terms-of-service'     
     termsOfServiceAgree = 'yes'
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHub"
+            url = uri("https://maven.pkg.github.com/Samasaur1/Utilities")
+            credentials {
+                username = findProperty("GITHUB_ACTOR")
+                password = findProperty("GITHUB_API_TOKEN")
+            }
+        }
+    }
+    publications {
+        maven(MavenPublication) {
+            groupId = group
+            artifactId = "utilities"
+
+            from components.java
+        }
+    }
 }
 
 def incrementPatchVersion() {
