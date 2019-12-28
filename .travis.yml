@@ -29,4 +29,4 @@ deploy:
     name: $NAME
     on:
         branch: master
-        jdk: oraclejdk8
+        jdk: oraclejdk9
